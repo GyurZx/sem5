@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zog-Zog-tac. | Mordor tactical </title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="/img/logo_iconM.jpg"/>
+</head>
+<body>
+<header class="widget-menu">
+    <li><a href="/main"><img src="/img/menu.jpg" alt=""></a></li>
+    <li><a href="/"><img src="/img/logo.jpg" alt=""></a></li>
+    <li><a href="/orders"><img src="/img/basket.jpg" alt=""></a></li>
+</header>
+<h1 align="center">Ваши Заказы:</h1>
+<table align="center">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Наименование товара:</th>
+        <th>Цена:</th>
+        <th>Статус:</th>
+        <th>Адресс доставки:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${ordersItems}">
+        <td><img th:src="@{'/img-tac/' + ${item.link} + '.jpg'}" alt="" height="40p" width="50p"></td>
+        <td class="item" th:text="${item.prod}"></td>
+<!--        дописать возможность добавлять адрес -->
+        <td class="item" th:text="${item.price} + '₽'"></td>
+        <td class="item" th:text="${item.state}"></td>
+        <td class="item" th:text="${item.address}"></td>
+    </tr>
+    </tbody>
+</table>
+</br></br>
+<a href="/orders"><h4 align="center">Корзина</h4></a>
+<div class="widget-3"></div>
+<footer>
+    <header class="widget-menu">
+        <li><a href="#"><img src="/img/i.jpg" alt="" height="40p" width="50p"></a></li>
+    </header>
+    <div class="widget-menu-footer">
+        <ul class="widget-menu">
+            <li><a href="/inf">Информация</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+            <li><a href="#">Методы оплаты</a></li>
+            <li><a href="#">Оптовые закупки</a></li>
+            <li><a href="/inf">Политика конфиденциальности</a></li>
+            <li><a href="#">Договор оферты</a></li>
+            <li><a href="#">Дополнительно</a></li>
+        </ul>
+    </div>
+    <div class="widget-menu-footer">
+        <ul class="widget-menu">
+            <li><a href="#">Акции</a></li>
+            <li><a href="#">Возвраты</a></li>
+            <li><a href="#">Карта сайта</a></li>
+        </ul>
+    </div>
+    <p>&copy; 2023 Zog-Zog-tac. Все права даёт война (классовая).</p>
+</footer>
+<div class="widget-3"></div>
+<script src="scripts.js"></script>
+</body>
+</html>

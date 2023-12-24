@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Great by food</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+  <div style="text-align: center;">
+<!--      Здесь задаем post, откуда Spring возьмет значение в бд -->
+    <form method="post">
+      <input type="text" name="text" placeholder="Добавить сообщение">
+      <input type="text" name="tag" placeholder="#tag">
+      <button type="submit">add message</button>
+    </form>
+      <div>New message</div>
+  </div>
+<!--       mustache обернуть в сообщение (которое пока не кладет ничо в бд, бл)-->
+    {{#messages}}
+  <div>
+    <b>{{id}}</b>
+    <span>{{text}}</span>
+    <i>{{tag}}</i>
+  </div>
+  {{/messages}}
+</body>
+</html>

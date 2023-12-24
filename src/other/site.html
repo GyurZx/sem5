@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body {
+    background-color: #333333;
+    color: #ffffff;
+    margin: 0;
+    front-family: 'Montserrat', sans-serif;
+
+    front-size: 15px;
+    line-height: 1.6;
+    color: #AAA;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    max_width: 1200px;
+    margin: 0 auto;
+  }
+
+  nav a {
+    text-decoration: none;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    list-style-position: inside;
+    font: 14px 'Oswald', sans-serif;
+    padding: 10px;
+  }
+
+  .top-menu li {
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 0;
+  }
+
+  .top-menu li.active {
+    background: #29c5e6;
+    color: #fff;
+  }
+
+  .top-menu a {
+    color: #b2b2b2;
+  }
+
+  aside {
+    float: left;
+    width: 250px;
+  }
+  section {
+    margin-left: 280px;
+    padding-bottom: 50px;
+  }
+</style>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+  <title>Macronutrient Calculator</title>
+</head>
+<body style="background-color: #333333;">
+<script>
+    function calculateMacronutrients() {
+    var weight = parseFloat(document.getElementById("weight").value);
+    var height = parseFloat(document.getElementById("height").value);
+    var age = parseInt(document.getElementById("age").value);
+    var gender = document.getElementById("gender").value;
+    var activityLevel = document.getElementById("activity").value;
+    var target = document.getElementById("target").value;
+
+    var protein = weight * 2.2;
+    var fat = weight * 0.8;
+    var carbohydrates = weight * 3.5;
+    var calories = 0;
+
+    switch (activityLevel) {
+        case "sedentary":
+            protein = protein * 0.85;
+            fat = fat * 0.85;
+            carbohydrates = carbohydrates * 0.85;
+            calories *= 0.85;
+            break;
+        case "lightly active":
+            protein = protein * 0.9;
+            fat = fat * 0.9;
+            carbohydrates = carbohydrates * 0.9;
+            calories *= 0.9;
+            break;
+        case "very active":
+            protein *= 1.1;
+            fat *= 1.1;
+            carbohydrates *= 1.1;
+            calories *= 1.1;
+            break;
+        case "extra active":
+            protein *= 1.2;
+            fat *= 1.2;
+            carbohydrates *= 1.2;
+            calories *= 1.2;
+            break;
+        default:
+            break;
+    }
+
+    switch (gender) {
+        case "male":
+            calories = 5 + (10 * weight) + (6.25 * height) - (5 * age);
+            break;
+        case "female":
+            calories = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            break;
+        default:
+            break;
+    }
+
+    switch(target) {
+        case "weight loss":
+              calories *= 0.8;
+              protein = protein * 0.8;
+              fat = fat * 0.8;
+              carbohydrates = carbohydrates * 0.8;
+              calories *= 1.5;
+            break;
+        case "save weight":
+              calories *= 1.1;
+              protein = protein * 1.1;
+              fat = fat * 1.1;
+              carbohydrates = carbohydrates * 1.1;
+              calories *= 1.2;
+            break;
+        case "gain mass":
+              calories *= 1.2;
+              protein = protein * 1.2;
+              fat = fat * 1.2;
+              carbohydrates = carbohydrates * 1.2;
+              calories *= 1.3;
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("protein").textContent = protein.toFixed(2);
+    document.getElementById("fat").textContent = fat.toFixed(2);
+    document.getElementById("carbohydrates").textContent = carbohydrates.toFixed(2);
+    document.getElementById("calories").textContent = calories.toFixed(2);
+
+    var x = document.getElementById("myText");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+
+    }
+}
+    </script>
+<nav>
+  <ul class="top-menu">
+    <li class="active"><a href="site.html">HOME</a></li>
+    <li><a href="about_us.html">ABOUT US</a></li>
+    <li><a href="services.html">SERVICES</a></li>
+    <li><a href="partners.html">PARTNERS</a></li>
+    <li><a href="customers.html">CUSTOMERS</a></li>
+    <li><a href="project.html">PROJECTS</a></li>
+    <li><a href="careers.html">CAREERS</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+  </ul>
+</nav>
+<div style="text-align: center;">
+<!--    <form method="post">-->
+<!--        <input type="text" name="text" placeholder="Send message">-->
+<!--        <input type="text" name="tag" placeholder="Send #tag">-->
+<!--        <button type="submit">Добавить message</button>-->
+<!--    </form>-->
+<!--    {{#messages}}-->
+<!--        <div>-->
+<!--            <b>{{id}}</b>-->
+<!--            <span>{{text}}</span>-->
+<!--            <i>{{tag}}</i>-->
+<!--        </div>-->
+<!--    {{/messages}}-->
+  <div class="container"></br>
+    <h1>Macronutrient Calculator</h1>
+  </div>
+  <form>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" required><br><br>
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" required><br><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br><br>
+    <label for="gender">Gender:</label>
+    <select id="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+    <label for="activity">Activity Level:</label>
+    <select id="activity" required>
+      <option value="sedentary">Sedentary</option>
+      <option value="lightly active">Lightly Active</option>
+      <option value="moderately active">Moderately Active</option>
+      <option value="very active">Very Active</option>
+      <option value="extra active">Extra Active</option>
+    </select><br><br>
+    <label for="target">Target:</label>
+    <select id="target" required>
+      <option value="weight loss">Похудение</option>
+      <option value="save weight">Чилить со своим весом</option>
+      <option value="gain mass">Набрать Массу</option>
+    </select><br><br>
+    <input type="button" value="Calculate" onclick="calculateMacronutrients()">
+  </form>
+  <div id="myText" style="display:none;">
+    <h2>Macronutrient Intake:</h2>
+    <p>Protein: <span id="protein"></span> grams</p>
+    <p>Fat: <span id="fat"></span> grams</p>
+    <p>Carbohydrates: <span id="carbohydrates"></span> grams</p>
+    <p>Calories: <span id="calories"></span> ккал</p>
+  </div>
+</div>
+</body>
+</html>

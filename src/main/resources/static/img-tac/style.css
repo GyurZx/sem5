@@ -1,0 +1,66 @@
+body{
+    background-color: #f2f2f2;
+    font-family: 'Roboto';
+}
+.fake{
+    height: 80px;
+    background-color: #222222;
+}
+#brand{
+    height: 80px;
+}
+.logo{
+    margin: 0 auto;
+    display: block;
+    transform: translate(0, 6px);
+}
+.container-bg{
+    background-color: #222222;
+}
+.bg-custom{
+    background-color: #222222;
+}
+.navbar-toggler{
+    margin:0 auto;
+}
+nav{
+    min-height: 80px;
+}
+.dropdown-menu{
+    background-color: #222222;
+}
+.dropdown-item{
+    color:white;
+    font-size:30px;
+}
+.dropdown-item.active{
+    background-color: white;
+    color:black;
+}
+#menu{
+    width:100%;
+}
+.navbar-nav{
+    width:100%;
+}
+#navbarSupportedContent{
+    font-size: 36px;
+}
+footer{
+    color:white;
+}
+.rights{
+    text-align: center;
+}
+.contacts{
+    text-align: center;
+}
+.map{
+    float: right;
+}
+.footer_text{
+    font-size: 24px;
+}
+#text{
+    margin: auto 0;
+}
